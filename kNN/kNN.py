@@ -77,3 +77,28 @@ def datingClassTest(k):
 	print(errorCount)
 	print(numTestVecs)
 	print("error rate is %f" %(errorCount/float(numTestVecs)))
+
+#约会网站预测函数
+
+def classifyPerson():
+	resultList = ['not at all','in small doses','in largr doses']
+	percentTats = float(input("playing time :"))
+	ffMiles = float(input("fly miles :"))
+	iceCream = float(input("numbers of iceCream :"))
+	datingDataMat,datingLabels = file2matrix("datingTestSet.txt")
+	normMat,ranges,minVals = autoNorm(datingDataMat)
+	inArr = array([ffMiles,percentTats,iceCream])
+	classifierResult = classify0((inArr-minVals)/ranges,normMat,datingLabels,3)
+	print("you properly like this person:",resultList[classifierResult-1])
+
+
+
+
+
+
+
+
+
+
+
+
